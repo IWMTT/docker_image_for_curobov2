@@ -40,11 +40,6 @@ http://localhost:8080
 http://localhost:8888
 ```
 
-`8080` 側では、 https://nvlabs.github.io/curobo/latest/getting-started/motion_planning.html　のインタラクティブ例を実行:
-
-
-`8888` 側では Jupyter Notebook を開いて、`/workspace` 配下でノートブックの作成・実行が可能。
-
 ## 5. Runpodでの利用
 
 My Templates > New templateでテンプレートを新規作成、Container imageおよびHTTP ports欄を指定し、Save Templateを実行。
