@@ -4,6 +4,20 @@ FROM ${BASE_IMAGE}
 ARG DEBIAN_FRONTEND=noninteractive
 ARG CUROBO_REF=v0.8.0
 ARG CUROBO_EXTRA=cu12-torch
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+
+ENV HTTP_PROXY=${HTTP_PROXY}
+ENV HTTPS_PROXY=${HTTPS_PROXY}
+
+RUN if [ -n "$HTTP_PROXY" ]; then \
+        echo "Acquire::http { Proxy \"$HTTP_PROXY\"; };" > /etc/apt/apt.conf.d/01proxy; \
+    fi
+RUN if [ -n "$HTTPS_PROXY" ]; then \
+        echo "Acquire::https { Proxy \"$HTTPS_PROXY\"; };" > /etc/apt/apt.conf.d/01proxy; \
+    fi
+
+
 
 ENV PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \

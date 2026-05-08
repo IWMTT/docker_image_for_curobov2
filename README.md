@@ -20,10 +20,12 @@ clone後、リポジトリ直下で下記を実行:
 docker build -t curobo-motion-planning:test .
 ```
 
+プロキシ環境下では、`--build-arg http_proxy=http://proxy  --build-arg https_proxy=http://proxy`を追加で指定
+
 
 （Hubから消えてなければ）下記からビルド済みのイメージを取得可能。
 ```bash
-docker push iwmtt/curobo-motion-planning:v0.8.0
+docker pull iwmtt/curobo-motion-planning:v0.8.0
 ```
 
 ## 3. 実行

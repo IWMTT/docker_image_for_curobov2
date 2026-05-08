@@ -20,16 +20,18 @@ cleanup() {
 trap cleanup EXIT INT TERM
 
 echo "Starting Jupyter Notebook on ${JUPYTER_HOST}:${JUPYTER_PORT}"
-jupyter notebook \
-  --ip="${JUPYTER_HOST}" \
-  --port="${JUPYTER_PORT}" \
+jupyter lab \
+  --ip="${JUPYTER_HOST:-0.0.0.0}" \
+  --port="${JUPYTER_PORT:-8888}" \
   --no-browser \
   --allow-root \
-  --ServerApp.root_dir="${NOTEBOOK_DIR}" \
-  --ServerApp.preferred_dir="${NOTEBOOK_DIR}" \
-  --ServerApp.token="${JUPYTER_TOKEN}" \
+  --ServerApp.root_dir="${NOTEBOOK_DIR:-/workspace}" \
+  --ServerApp.preferred_dir="${NOTEBOOK_DIR:-/workspace}" \
+  --ServerApp.token="${JUPYTER_TOKEN:-}" \
   --ServerApp.password='' \
   --ServerApp.allow_remote_access=True \
+  --ServerApp.allow_origin='*' \
+  --ServerApp.trust_xheaders=True \
   --ServerApp.disable_check_xsrf=True \
   > /tmp/jupyter.log 2>&1 &
 JUPYTER_PID=$!
