@@ -30,8 +30,6 @@ docker pull iwmtt/curobo-motion-planning:v0.8.0
 
 ## 3. 実行
 
-Linux/macOS の例:
-
 ```bash
 docker run --rm -it --gpus all -p 8888:8888 -p 8080:8080 curobo-motion-planning:test
 ```
